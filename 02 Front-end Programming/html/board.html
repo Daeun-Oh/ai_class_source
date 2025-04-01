@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Q&A</h1>
+        <form action="board_ps.html" method="post">
+            <dl>
+                <dt>분류</dt>
+                <dd>
+                    <select name="category">
+                        <option value="qna">Q&A</option>
+                        <option value="Buynsell">Buy&Sell</option>
+                        <option value="freetalk">Free Talk</option>
+                    </select>
+                </dd>
+            </dl>
+            <dl>
+                <dt>제목</dt>
+                <dd>
+                    <input type="text" name="title" required placeholder="제목을 입력하세요.">
+                </dd>
+            </dl>
+            <dl>
+                <dt>작성자 이름</dt>
+                <dd>
+                    <input type="text" name="userName" required placeholder="이름을 입력하세요.">
+                </dd>
+            </dl>
+            <dl>
+                <dt>내용</dt>
+                <dd>
+                    <textarea name="contents" rows="10" cols="50" placeholder="내용을 입력하세요."></textarea>
+                </dd>
+            </dl>
+            <dl>
+                <dt>이미지 첨부</dt>
+                <dd>
+                    <input type="file" name="userImage" accept="image/*" multiple>
+                </dd>
+            </dl>
+            <dl>
+                <dt>파일 첨부</dt>
+                <dd>
+                    <input type="file" name="userFile" multiple>
+                </dd>
+            </dl>
+            <button type="reset">다시입력</button>
+            <button type="submit">제출하기</button>
+        </form>
+    </body>
+</html>
