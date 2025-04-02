@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <style>
+            .input-txt:focus {
+                background: yellow;
+            }
+            .box {
+                width: 100px;
+                height: 100px;
+                background: orange;
+                transition: all 0.7s;
+            }
+            .box:hover {
+                width: 200px;
+                height: 200px;
+                transform: rotate(360deg);
+            }
+        </style>
+        <!--텍스트 박스: 포커싱된 상태면 배경이 노란색으로 바뀜-->
+        <input type="text" class="input-txt">
+
+        <!--오렌지 박스: 커서를 갖다 대면 회전하면서 커짐-->
+        <div class="box"></div>
+    </body>
+</html>

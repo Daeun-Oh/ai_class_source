@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <style>
+            /* ul li:first-child {         자식의 첫 번째 요소
+                background: red;
+            }
+
+            ul li:last-child {          자식의 마지막 요소
+                background: blue;
+            }
+
+            ul li:nth-child(2),         자식의 특정 요소
+            ul li:nth-child(4),
+            ul li:nth-child(7) {
+                background: gray;
+            }
+
+            ul li:nth-child(2n + 1) {   홀수 번째 요소
+                background: violet;
+            }
+
+            ul li:nth-of-type(2n + 1) {    홀수 번째 요소
+                background: violet;
+            }
+            */
+
+            ul li:not(.menu5) { /* menu5 요소만 제외 모든 li 선택 */
+                background: green;
+            }
+
+            ul::before {    /*ul 태그 자식 요소의 첫번째 추가*/
+                width: 100px;
+                height: 50px;
+                background: red;
+                content: "내용!";
+            }
+
+            ul::after {     
+                background: blue;
+                content: '마지막!!';
+            }
+        </style>
+        <ul>
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+            <li>메뉴4</li>
+            <li>메뉴5</li>
+            <li>메뉴6</li>
+            <li>메뉴7</li>
+            <li>메뉴8</li>
+            <li>메뉴9</li>
+            <li>메뉴10</li>
+        </ul>
+    </body>
+</html>

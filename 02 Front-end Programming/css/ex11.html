@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <style>
+            html {
+                font-size: 13px;    /* 1rem(기준) => 13px */
+            }
+
+            .font1 {
+                font-size: 1rem;    /* 13px */
+                background-color: black;
+                color: rgba(100, 200, 150, 0.5);
+            }
+
+            .font2 {
+                font-size: 2rem;    /* 26px */
+            }
+
+            .font3 {
+                font-size: 3rem;    /* 39px */
+            }
+
+            .font4 {
+                font-size: 25px;    /* 1em(기준) => 25px */
+            }
+
+            .font4 span {
+                font-size: 3em;    /* 3em => 75px */
+            }
+
+            .box {
+                width: 300px;
+                height: 300px;
+                background-color: rgba(0, 0, 0, 1);
+                transition: all 0.7;
+            }
+
+            .box:hover{
+                width: 300px;
+                height: 300px;
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+        </style>
+        
+        <p class="font1">가</p>
+        <p class="font2">나</p>
+        <p class="font3">다</p>
+
+        <p class="font4">
+            <span>라</span>
+        </p>
+        <div class="box"></div>
+    </body>
+</html>

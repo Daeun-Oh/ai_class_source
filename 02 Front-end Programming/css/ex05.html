@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <style>
+            ul li {         /* 조상 자손 선택자*/
+                background: green;
+            }
+
+            ol span {       /* 조상 자손 선택자*/
+                color: red;
+            }
+
+            .menu > span {  /* 부모 자식 선택자 */
+                background: orange;
+            }
+        </style>
+        <ul>
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+            <li>메뉴4</li>
+            <li>메뉴5</li>
+        </ul>
+        <ol>
+            <li class = "menu">
+                <span>메뉴1</span>
+                <div>
+                    서브 메뉴
+                    <span>메뉴..</span>
+                </div>
+            </li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+            <li>메뉴4</li>
+            <li>메뉴5</li>
+        </ol>
+    </body>
+</html>
