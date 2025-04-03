@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <style>
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            ul li {
+                float: left;
+                /* float: right; */
+            }
+
+            .clear {
+                clear: left;
+                display: block;
+            }
+
+            .menus::after {
+                content: '';
+                clear: left;
+                display: block;
+            }
+        </style>
+
+        <!-- 방법 1) Inline 내에서 clear 사용 -->
+        <ul>
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+            <span class="clear"></span>
+        </ul>
+        <div>메뉴 설명...</div>
+
+        <!-- 방법 2) 가상 클래스 사용 -->
+        <ul class="menus">
+            <li>메뉴1</li>
+            <li>메뉴2</li>
+            <li>메뉴3</li>
+        </ul>
+        <div>메뉴 설명...</div>
+    </body>
+</html>

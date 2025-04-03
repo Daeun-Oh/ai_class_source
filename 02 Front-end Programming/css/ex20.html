@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <style>
+            .box {
+                width: 100px;
+                height: 100px;
+            }
+
+            .box1 {
+                background-color: orange;
+                position: relative;
+                left: 100px;    /* 왼쪽 -> 오른쪽으로 100px 이동 */
+                top: 100px;     /* 위 -> 아래로 100px 이동 */
+            }
+
+            .box2 {
+                background-color: blue;
+                position: absolute;
+                left: 100px;    /* 왼쪽 -> 오른쪽으로 100px 이동 */
+                top: 100px;     /* 위 -> 아래로 100px 이동 */
+            }
+
+            .box3 {
+                background-color: olive;
+                position: absolute;
+                left: 250px;
+                top: 100px;
+            }
+
+            .wrapper {
+                position: relative;
+                margin: 250px;
+                width: 800px;
+                height: 5000px;
+                border: 1px solid blue;
+            }
+
+            .box4 {
+                background-color: pink;
+                position: fixed;
+                left: 200px;
+                top: 200px;
+            }
+        </style>
+        <div class="box box1">box1</div>
+        <div class="box box2">box2</div>
+
+        <div class="box box4">box4</div>
+
+        <div class="wrapper">
+            <div class="box box3">box3</div>
+        </div>
+    </body>
+</html>
