@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&display=swap');
 
 /* 기본 스타일 초기화 S */
 html {
@@ -14,7 +15,7 @@ body {
     min-width: 350px;
     background: #fff;
     margin: 0 auto;
-    min-height: 700px;
+    min-height: 1000px;
 }
 
 ul, ol {
@@ -35,23 +36,35 @@ h1, h2, h3, h4, h5, h6 {
 img {
     border: 0;
 }
-
 /* 기본 스타일 초기화 E */
 
 /* 공통 스타일 S */
-
 * {
     box-sizing: border-box;
     outline: none;
     font-family: "Noto Sans KR", sans-serif;
 }
 
+h2 {
+    font-size: 1.539rem;
+    color: #212121;
+    line-height: 1;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.montserrat {
+    font-family: "Montserrat", sans-serif;
+}
 /* 공통 스타일 E */
 
 /* 헤더 영역 S */
-
 header {
     display: flex;
+    height: 66px;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 0 15px;
+    align-items: center;
 }
 
 header .left {
@@ -60,6 +73,7 @@ header .left {
 
 header .right {
     width: 90px;
+    text-align: right;
 }
 
 header .logo {
@@ -67,4 +81,190 @@ header .logo {
     text-align: center;
 }
 
+header .logo img {
+    height: 34px;
+}
+
+header .right img {
+    height: 22px;
+}
+
+header .left img {
+    height: 22px;
+}
+
+header .right a:last-of-type { /* 장바구니 */
+    margin-left: 17px;
+}
+
+header .left button:first-of-type { /* 더보기 */
+    margin-right: 22px;
+}
+
+header .left button {
+    width: 25px;
+    height: 20px;
+    border: 0;
+}
+
+header .left .more_btn {
+    background: #fff url("../images/more_btn.png") no-repeat center center;
+    background-size: contain;
+}
+
+header .left .search_btn {
+    background: #fff url("../images/search.png") no-repeat center center;
+    background-size: contain;
+}
 /* 헤더 영역 E */
+
+/* 사이트 주 메뉴 S */
+nav {
+    display: flex;
+    height: 44px;
+}
+
+nav a {
+    width: 0;
+    flex-grow: 1;
+    text-align: center;
+    line-height: 44px;
+    color: #494949;
+}
+/* 사이트 주 메뉴 E */
+
+/* 메인 배너 S */
+.main-banner {
+    position: relative;
+    overflow: hidden;
+}
+
+.main-banner .swiper-slide img {
+    width: 100%;
+    display: block;
+}
+
+.main-banner .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.main-banner .swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+.main-banner .swiper-button-prev,
+.main-banner .swiper-button-next {
+    color: #fff;
+    opacity: 0.3;
+}
+
+.main-banner .swiper-button-prev:hover,
+.main-banner .swiper-button-next:hover {
+    opacity: 1;
+    transition: all 0.3s;
+}
+
+.main-banner .swiper-pagination {
+    bottom: 10px;
+}
+/* 메인 배너 E */
+
+/* 서브 메뉴 S */
+.sub-menus {
+    border: 10px solid #dadada;
+    border-bottom-width: 9px;
+    border-left: 0;
+    border-right: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sub-menus a {
+    width: calc(100% / 3);
+    height: 50px;
+    line-height: 49px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.077rem;
+    border-bottom: 1px solid #dadada;
+    border-left: 1px solid #dadada;
+}
+
+.sub-menus a:nth-of-type(3n + 1) {
+    border-left: 0;
+}
+/* 서브 메뉴 S */
+
+/* 하단 퀵 버튼 S */
+.quick-buttons {
+    position: fixed;
+    bottom: 70px;
+    right: 10px;
+}
+
+.quick-buttons img {
+    display: block;
+    width: 50px;
+}
+
+.quick-buttons a + a img { /* a + a: ?? */
+    margin-top: 10px;
+}
+/* 하단 퀵 버튼 E */
+
+/* 상품 영역 S */
+.products-wrap {
+    padding: 0 15px;
+}
+
+.products-wrap ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.products-wrap ul li {
+    width: calc(50% - 8px);
+    margin-bottom: 30px;
+}
+
+.products-wrap ul li:nth-of-type(2n + 1) {
+    margin-right: 16px;
+}
+
+.products-wrap .product-image {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.products-wrap .price-info {
+    font-size: 1.154rem;
+}
+
+.products-wrap .price-info span {
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.products-wrap .product-name {
+    font-size: 1.154rem;
+    color: #3e3d3c;
+}
+
+.products-wrap .star-image {
+    height: 11;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+.products-wrap .review span {
+    font-size: 1rem;
+}
+/* 상품 영역 E */
