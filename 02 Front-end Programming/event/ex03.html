@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <style>
+            .box {
+                padding: 100px;
+            }
+
+            .box1 {
+                background-color: gray;
+            }
+
+            .box2 {
+                background-color: limegreen;
+            }
+
+            .box3 {
+                background-color: orangered;
+            }
+        </style>
+        <script>
+            window.addEventListener("DOMContentLoaded", function() {
+                // css 선택자로 노드를 가져오는 것이기 때문에 css 선택자에 마침표 필수 (.box1)
+                const box1 = document.querySelector(".box1");
+                const box2 = document.querySelector(".box2");
+                const box3 = document.querySelector(".box3");
+                
+                box1.addEventListener("click", function() {
+                    console.log("box1 clicked");
+                });
+
+                box2.addEventListener("click", function() {
+                    console.log("box2 clicked");
+                });
+
+                box3.addEventListener("click", function(e) {
+                    console.log("box3 clicked");
+                    //e.stopPropagation();            // 이벤트 전파의 차단
+                    e.stopImmediatePropagation();   // 이벤트 전파의 즉시 차단
+                });
+
+                box3.addEventListener("click", function() {
+                    console.log("box3 clicked 2");
+                });
+            });
+        </script>
+        <div class="box box1">
+            BOX1
+            <div class="box box2">
+                BOX2
+                <div class="box box3">
+                    BOX3
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

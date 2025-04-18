@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>    // 실제로 만들 때는 .js 파일로 따로 빼서 만들어야 한다.
+            window.addEventListener("DOMContentLoaded", function() {
+                const el = document.getElementById("button");   // Id로 선택
+                el.addEventListener("click", function() {   // 매개변수로서의 함수
+                    alert("확인1");
+                });
+
+                el.addEventListener("click", function() {   // 매개변수로서의 함수
+                    alert("확인2");
+                });
+                // el.onclick = function() {
+                //     // 이벤트 발생 시 처리할 동작
+                //     alert("확인1");
+                // };
+                // el.onclick = function() {
+                //     alert("확인2");
+                // }
+            });
+        </script>
+        <button type="button" id="button">클릭</button>
+    </body>
+</html>
