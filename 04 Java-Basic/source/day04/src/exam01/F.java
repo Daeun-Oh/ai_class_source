@@ -1,4 +1,4 @@
 package exam01;
 
-public class F {
+public class F extends A{
 }
