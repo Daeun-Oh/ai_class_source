@@ -46,7 +46,7 @@ public class Book implements Comparable<Book> {
         // author 기준
         //return author.hashCode() - o.author.hashCode();
         //return author.compareTo(o.author); // 오름차순
-        //return -author.compareTo(o.author); // 오름차순
-        return o.author.compareTo(author); // 내림차순
+        return -author.compareTo(o.author); // 내림차순
+        //return o.author.compareTo(author); // 내림차순
     }
 }
