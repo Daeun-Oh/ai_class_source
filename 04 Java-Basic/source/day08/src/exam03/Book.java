@@ -39,14 +39,22 @@ public class Book implements Comparable<Book> {
 
     @Override
     public int compareTo(Book o) {
-        //return isbn - o.isbn;       // isbn 기준 오름차순
-        //return o.isbn - isbn;       // isbn 기준 내림차순
-        //return -(isbn - o.isbn);    // 내림차순
+        /* isbn 기준 오름차순 */
+        return isbn - o.isbn;
+        //return -(o.isbn - isbn);
 
-        // author 기준
+        /* isbn 기준 내림차순 */
+        //return o.isbn - isbn;
+        //return -(isbn - o.isbn);
+
+        /* author 기준 오름차순 */
         //return author.hashCode() - o.author.hashCode();
-        //return author.compareTo(o.author); // 오름차순
-        return -author.compareTo(o.author); // 내림차순
-        //return o.author.compareTo(author); // 내림차순
+        //return author.compareTo(o.author);
+        //return -o.author.compareTo(author);
+
+        /* author 기준 내림차순 */
+        //return -(author.hashCode() - o.author.hashCode());
+        //return -author.compareTo(o.author);
+        //return o.author.compareTo(author);
     }
 }
