@@ -1,10 +1,12 @@
 package exam03;
 
+import java.util.Comparator;
 import java.util.TreeSet;
 
 public class Ex04 {
     public static void main(String[] args) {
-        TreeSet<Book> books = new TreeSet<>();
+//        TreeSet<Book> books = new TreeSet<>();
+        TreeSet<Book> books = new TreeSet<>(Comparator.reverseOrder());
         books.add(new Book(1000, "책1", "저자1", "출판사1"));
         books.add(new Book(1001, "책2", "저자2", "출판사2"));
         books.add(new Book(1002, "책3", "저자3", "출판사3"));
