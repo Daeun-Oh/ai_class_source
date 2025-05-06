@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.koreait.board.mappers.BoardMapper">
+    <insert id="register" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO POST (title, content, writer_id)
+        VALUES (#{title}, #{content}, #{writerId})
+    </insert>
+
+    <update id="update">
+        UPDATE POST
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+
+            <if test="content != null">
+                content = #{content},
+            </if>
+        </set>
+        <where>
+            id = #{id} AND writer_id = #{writerId}
+        </where>
+    </update>
+
+    <delete id="delete">
+        DELETE FROM POST WHERE id=#{id} AND writer_id = #{writerId};
+    </delete>
+
+    <select id="get">
+        SELECT * FROM POST WHERE id=#{id} AND writer_id = #{writerId};
+    </select>
+
+    <select id="getList">
+        SELECT * FROM POST
+        <where>
+            <if test="skey != null">
+                <bind name="_skey" value="'%' + _parameter.getSkey() + '%'"/>
+                <if test="sopt == 'title'">
+                    title LIKE #{_skey}
+                </if>
+                <if test="sopt == 'content'">
+                    content LIKE #{_skey}
+                </if>
+                <if test="sopt == null">
+                    CONCAT(title, content) LIKE #{_skey}
+                </if>
+            </if>
+        </where>
+        ORDER BY id DESC LIMIT #{offset}, #{limit}
+    </select>
+</mapper>
