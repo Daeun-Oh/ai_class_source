@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<web-app
+    xmlns="https://jakarta.ee/xml/ns/jakartaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+    https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+    version="6.0">
+    <context-param>
+        <param-name>common1</param-name>
+        <param-value>cValue1</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>common2</param-name>
+        <param-value>cValue2</param-value>
+    </context-param>
+
+    <servlet>
+        <servlet-name>member-join</servlet-name>
+        <servlet-class>org.koreait.controllers.MemberController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>member-join</servlet-name>
+        <url-pattern>/member/join</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>board</servlet-name>
+        <servlet-class>org.koreait.controllers.BoardController</servlet-class>
+        <init-param>
+            <param-name>key1</param-name>
+            <param-value>value1</param-value>
+        </init-param>
+        <init-param>
+            <param-name>key2</param-name>
+            <param-value>value2</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>board</servlet-name>
+        <url-pattern>/board</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>board-filter1</filter-name>
+        <filter-class>org.koreait.filters.BoardFilter1</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>board-filter1</filter-name>
+        <url-pattern>/board</url-pattern>
+    </filter-mapping>
+</web-app>
