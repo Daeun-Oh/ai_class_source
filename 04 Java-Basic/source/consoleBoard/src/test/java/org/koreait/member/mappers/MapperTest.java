@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.koreait.global.configs.DBConnection;
 import org.koreait.member.entities.Member;
 
+import java.util.List;
+
 public class MapperTest {
     private MemberMapper mapper;
 
@@ -53,5 +55,12 @@ public class MapperTest {
 
         //List<Member> members = mapper.getList();
         //members.forEach(System.out::println);
+    }
+
+    @Test
+    void test4() {
+        int[] seqList = {4, 6, 8};
+        List<Member> members = mapper.getMembersIn(seqList);
+        members.forEach(System.out::println);
     }
 }

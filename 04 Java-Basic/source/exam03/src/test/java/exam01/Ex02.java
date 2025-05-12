@@ -38,6 +38,31 @@ public class Ex02 {
     }
 
     @Test
+    void test() {
+        String sql = "SELECT * FROM member WHERE seq = ?";
+        try (Connection con = ds.getConnection();       // 자원 해제
+             Statement stmt = con.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            List<Member> members = new ArrayList<>();
+            while(rs.next()) {  // 커서 이동
+                long seq = rs.getLong("seq");
+                String email = rs.getString("email");
+                String name = rs.getString("name");
+                String mobile = rs.getString("mobile");
+                boolean terms = rs.getBoolean("terms");
+                LocalDateTime regDt = rs.getTimestamp("regDt").toLocalDateTime();
+                members.add(new Member(seq, email, name, mobile, terms, regDt));    // VO(Value Object) 또는 데이터 클래스
+                //System.out.printf("seq=%d, email=%s, name=%s, mobile=%s, terms=%s%n", seq, email, name, mobile, terms);
+            }
+            members.forEach(System.out::println);
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
     void test1() {
         try (Connection con = ds.getConnection();       // 자원 해제
              Statement stmt = con.createStatement()) {

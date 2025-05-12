@@ -16,6 +16,8 @@ public interface MemberMapper {
     Optional<Member> get(String email);
     List<Member> getList(SearchForm search);
 
+    List<Member> getMembersIn(@Param("seqList") int[] seqList);
+
     /**
      * 입력 받은 email이 MEMBER 테이블에 몇 개 있는지 반환하는 메서드
      * - Join 검증 때 사용된다.

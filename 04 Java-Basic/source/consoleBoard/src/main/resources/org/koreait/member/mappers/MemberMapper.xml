@@ -35,6 +35,14 @@
         SELECT * FROM MEMBER WHERE email=#{email};
     </select>
 
+    <select id="getMembersIn">
+        SELECT * FROM MEMBER
+        WHERE seq IN
+        <foreach collection="seqList" item="seq" open="(" separator="," close=")">
+            #{seq}
+        </foreach>
+    </select>
+
     <select id="getList">
         SELECT * FROM MEMBER
         <where>
