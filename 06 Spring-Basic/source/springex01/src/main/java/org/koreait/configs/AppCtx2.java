@@ -2,7 +2,6 @@ package org.koreait.configs;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
 
 import java.time.format.DateTimeFormatter;
 
@@ -21,9 +20,10 @@ import java.time.format.DateTimeFormatter;
 //@ComponentScan(basePackages = "org.koreait",
 //        excludeFilters = @ComponentScan.Filter(type = FilterType.ASPECTJ,   // 자동 스캔에서 배제
 //                                                pattern = "org.koreait..*Dao"))   // koreait 포함한 하위의 모든 Dao 파일을 배제한다 (ANT 패턴)
-@ComponentScan(basePackages = "org.koreait",
-        excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX,   // 자동 스캔에서 배제
-                                                pattern = "org.koreait.member\\..*Dao"))
+//@ComponentScan(basePackages = "org.koreait",
+//        excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX,   // 자동 스캔에서 배제
+//                                                pattern = "org.koreait.member\\..*Dao"))
+@ComponentScan("org.koreait")
 public class AppCtx2 {
     //@Bean
     public DateTimeFormatter dateTimeFormatter() {

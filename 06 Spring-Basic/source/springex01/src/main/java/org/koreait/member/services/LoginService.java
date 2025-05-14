@@ -1,5 +1,7 @@
 package org.koreait.member.services;
 
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.koreait.member.RequestLogin;
 import org.koreait.member.dao.MemberDao;
 import org.koreait.member.entities.Member;
@@ -11,13 +13,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class LoginService {
-    @Autowired
-    private LoginValidator validator;
+//    @Autowired
+    private final LoginValidator validator;
 
     //@Autowired
     //private MemberDao memberDao;
-    @Autowired
+
+    //@Autowired
+    @NonNull
     private Optional<MemberDao> opt;    // Optional 클래스도 자동 주입 가능
 
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM.dd");
