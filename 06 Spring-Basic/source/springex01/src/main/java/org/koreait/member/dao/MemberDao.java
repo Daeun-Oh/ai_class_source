@@ -1,5 +1,6 @@
 package org.koreait.member.dao;
 
+import org.koreait.configs.ManualBean;
 import org.koreait.member.entities.Member;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +13,7 @@ import java.util.Map;
 /**
  * DB에 연결되어 있다고 가정
  */
+@ManualBean
 @Repository
 public class MemberDao {
     private Map<String, Member> members = new HashMap<>();
