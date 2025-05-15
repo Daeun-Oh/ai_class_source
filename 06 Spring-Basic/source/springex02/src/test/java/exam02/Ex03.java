@@ -21,7 +21,21 @@ public class Ex03 {
 
     @Test
     void test1() {
+        /**
+         * 이렇게 같은 결과를 여러 개 만들려고 할 때,
+         * 굳이 여러 번 연산할 필요가 없다.
+         * 한 번 연산한 결과를 캐시에 저장해 꺼내 쓰자! -> CacheCalculator
+         */
         long result = calculator.factorial(10L);
+        System.out.printf("result: %d%n", result);
+
+        result = calculator.factorial(10L);
+        System.out.printf("result: %d%n", result);
+
+        result = calculator.factorial(10L);
+        System.out.printf("result: %d%n", result);
+
+        result = calculator.factorial(10L);
         System.out.printf("result: %d%n", result);
     }
 }
