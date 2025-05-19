@@ -2,6 +2,15 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <c:url var="action" value="/member/join" />
+
+<h1>${commonTitle}</h1>
+requestJoin : ${requestJoin}
+
+hobby[0] : ${requestJoin.hobby[0]}<br>
+hobby[1] : ${requestJoin.hobby[1]}<br>
+requestJoin.add.address : ${requestJoin.addr.address}<br>
+
+
 <form:form action="${action}" modelAttribute="requestJoin">
     <dl>
         <dt>이메일</dt>
@@ -31,6 +40,22 @@
         <dt>휴대전화번호</dt>
         <dd>
             <form:input path="mobile" />
+        </dd>
+    </dl>
+    <dl>
+        <dt>주소</dt>
+        <dd>
+            <div>
+                <form:input path="addr.zoneCode" />
+            </div>
+            <form:input path="addr.address" />
+            <form:input path="addr.addressSub" />
+        </dd>
+    </dl>
+    <dl>
+        <dt>취미</dt>
+        <dd>
+            <form:checkboxes items="${hobbies}" path="hobby" />
         </dd>
     </dl>
     <dl>

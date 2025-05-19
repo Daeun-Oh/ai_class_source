@@ -2,6 +2,8 @@ package org.koreait.global.member.controllers;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * 커멘드 객체 클래스
  */
@@ -13,4 +15,9 @@ public class RequestJoin {
     private String name;
     private String mobile;
     private boolean agree;
+
+    // 커맨드 안에 커맨드 객체 (중첩된 커맨드 객체)
+    private RequestAddress addr;
+
+    private List<String> hobby;
 }
