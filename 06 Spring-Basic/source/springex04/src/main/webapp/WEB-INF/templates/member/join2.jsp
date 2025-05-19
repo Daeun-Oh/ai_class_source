@@ -30,7 +30,7 @@
     <dl>
         <dt>약관동의</dt>
         <dd>
-            <input type="checkbox" name="agree" value="true" id="agree"${requestJoin.agree ?>
+            <input type="checkbox" name="agree" value="true" id="agree" ${requestJoin.agree ? 'checked' : ''>
             <label for="agree">약관에 동의합니다.</label>
         </dd>
     </dl>

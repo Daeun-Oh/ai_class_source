@@ -4,7 +4,6 @@
 <c:url var="action" value="/member/join" />
 
 <h1>${commonTitle}</h1>
-requestJoin : ${requestJoin}
 
 hobby[0] : ${requestJoin.hobby[0]}<br>
 hobby[1] : ${requestJoin.hobby[1]}<br>

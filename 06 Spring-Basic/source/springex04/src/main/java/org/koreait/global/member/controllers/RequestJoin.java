@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * 커멘드 객체 클래스
+ * 커맨드 객체 클래스
  */
 @Data
 public class RequestJoin {
