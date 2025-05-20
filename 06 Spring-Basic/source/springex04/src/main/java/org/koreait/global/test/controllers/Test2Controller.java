@@ -20,4 +20,13 @@ public class Test2Controller {
 
         return "test/test";
     }
+
+    public List<CodeValue> getProgrammings() {
+        return List.of(
+                new CodeValue("JAVA", "자바"),
+                new CodeValue("PYTHON", "파이썬"),
+                new CodeValue("JAVASCRIPT", "자바스크립트"),
+                new CodeValue("RUST", "러스트")
+        );
+    }
 }
