@@ -1,23 +1,30 @@
 package org.koreait.global.member.controllers;
 
+import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
-import java.util.List;
-
-/**
- * 커맨드 객체 클래스
- */
 @Data
 public class RequestJoin {
+
+    @Email
+    @NotBlank
     private String email;
+
+    @Size(min = 8)
+    @NotBlank
     private String password;
+
+    @NotBlank
     private String confirmPassword;
+
+    @NotBlank
     private String name;
+
     private String mobile;
+
+    @AssertTrue
     private boolean agree;
-
-    // 커맨드 안에 커맨드 객체 (중첩된 커맨드 객체)
-    private RequestAddress addr;
-
-    private List<String> hobby;
 }
