@@ -27,6 +27,8 @@ public class JoinValidator2 implements Validator {
 
         RequestJoin form = (RequestJoin)target;
 
+        boolean agree = form.isAgree();
+
         // 1. 필수 항목 검증 S
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Required");

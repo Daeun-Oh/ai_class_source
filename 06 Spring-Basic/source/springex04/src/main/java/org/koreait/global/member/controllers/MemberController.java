@@ -7,11 +7,11 @@ import org.koreait.global.member.entities.Member;
 import org.koreait.global.member.services.JoinService;
 import org.koreait.global.member.services.LoginService;
 import org.koreait.global.member.validators.JoinValidator;
+import org.koreait.global.member.validators.JoinValidator2;
 import org.koreait.global.member.validators.LoginValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 public class MemberController {
 
     //@Autowired // 의존성 주입 -> 말고 final + @RequiredArgsConstructor
-    private final JoinValidator joinValidator;
+    private final JoinValidator2 joinValidator;
     private final JoinService joinService;
 
     private final LoginValidator loginValidator;
@@ -42,14 +42,14 @@ public class MemberController {
 //    }
 
     @GetMapping("/join")
-    public String Join(@ModelAttribute RequestJoin form) {
+    public String join(@ModelAttribute RequestJoin form) {
         System.out.println(form);
 
         return "member/join";
     }
 
     @PostMapping("/join")
-    public String JoinPs(@Valid RequestJoin form, Errors errors) {
+    public String joinPs(@Valid RequestJoin form, Errors errors) {
         joinValidator.validate(form, errors);
 
         if (errors.hasErrors()) {   // 검증 실패했을 경우
