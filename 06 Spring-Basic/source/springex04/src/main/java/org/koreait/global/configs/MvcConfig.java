@@ -3,9 +3,12 @@ package org.koreait.global.configs;
 import lombok.RequiredArgsConstructor;
 import org.koreait.global.member.validators.JoinValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.validation.Validator;
 import org.springframework.web.servlet.config.annotation.*;
 
@@ -44,6 +47,17 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.jsp("/WEB-INF/templates/", ".jsp");
     }
 
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer configurer() {
+        PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
+
+        String profile = System.getenv("spring.profiles.active");
+        String configFile = profile != null && profile.equals("prod") ? "application-prod" : "application";
+
+        configurer.setLocations(new ClassPathResource(configFile + ".properties"));
+
+        return configurer;
+    }
 //    @Override
 //    public Validator getValidator() {
 //        return joinValidator;

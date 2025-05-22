@@ -3,16 +3,27 @@ package org.koreait.global.member.controllers;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.koreait.global.exceptions.CommonException;
 import org.koreait.global.member.entities.Member;
+import org.koreait.global.member.exceptions.MemberNotFoundException;
+import org.koreait.global.member.repositories.MemberRepository;
 import org.koreait.global.member.services.JoinService;
 import org.koreait.global.member.services.LoginService;
 import org.koreait.global.member.validators.JoinValidator;
 import org.koreait.global.member.validators.JoinValidator2;
 import org.koreait.global.member.validators.LoginValidator;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/member")
@@ -25,6 +36,8 @@ public class MemberController {
 
     private final LoginValidator loginValidator;
     private final LoginService loginService;
+
+    private final MemberRepository repository;
 
     /**
      * MemberController에서 공통으로 공유할 수 있는 속성
@@ -105,6 +118,56 @@ public class MemberController {
     public void memberInfo(@SessionAttribute() Member member) {
         System.out.println(member);
     }
+
+    @GetMapping("/list")
+    public String memberList(@ModelAttribute @Valid MemberSearch search, Errors errors, Model model) {
+        LocalDate sDate = Objects.requireNonNullElse(search.getSDate(), LocalDate.now());
+        LocalDate eDate = Objects.requireNonNullElse(search.getEDate(), LocalDate.now());
+
+        LocalDateTime _sDate = sDate.atStartOfDay();    // 지정된 날짜의 자정 (0시 0분)
+        LocalDateTime _eDate = eDate.atTime(23, 59, 59);    // _eDate는 지정된 날짜의 23시 59분 59초
+
+        List<Member> items = repository.findByRegDtBetween(_sDate, _eDate);
+        model.addAttribute("items", items);
+
+        return "member/list";
+    }
+
+    @ResponseBody
+    @GetMapping({"/view/{seq}", "/view/info/{email}"})
+    public void view(@PathVariable(name = "seq", required = false) Long mSeq,
+                       @PathVariable(name = "email", required = false) String email) {
+        System.out.printf("seq: " + mSeq);
+        System.out.printf("email: " + email);
+
+        if (StringUtils.hasText(email)) {
+            Member member = repository.findByEmail(email).orElseThrow(MemberNotFoundException::new);
+            System.out.println(member);
+        }
+
+        //return null;
+    }
+
+//    //@ResponseStatus(HttpStatus.NOT_FOUND)
+//    @ExceptionHandler(Exception.class)
+//    public ModelAndView errorHandler(Exception e, Model model) {
+//
+//        model.addAttribute("message", e.getMessage());
+//
+//        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
+//
+//        if (e instanceof CommonException commonException) {
+//            status = commonException.getStatus();
+//        }
+//
+//        e.printStackTrace();
+//
+//        ModelAndView mv = new ModelAndView();
+//        mv.setViewName("error/error");
+//        mv.setStatus(status);
+//
+//        return mv;
+//    }
 
     // MemberController 공통 적용 Validator
 //    @InitBinder

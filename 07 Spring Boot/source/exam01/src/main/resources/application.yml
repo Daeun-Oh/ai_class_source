@@ -1,0 +1,15 @@
+server:
+  port: 3000
+  servlet:
+    session.cookie.name: bfwa21abeq
+
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${db.url}
+    username: ${db.username}
+    password: ${db.password}
+
+logging:
+  level:
+    org.springframework.jdbc: TRACE
