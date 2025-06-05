@@ -2,14 +2,19 @@
 import os
 import sys
 import requests
+import json
 from time import strftime
 from konlpy.tag import Okt
 from collections import Counter
 from wordcloud import WordCloud
 from bs4 import BeautifulSoup as bs
 
+# sys.argv에 값이 넘어오지 않은 경우
+if len(sys.argv) < 2:
+    sys.exit(1)  # 0: 정상 종료, 1: 비정상 종료
+
 # 워드 클라우드 이미지가 저장될 경로 체크 (없으면 생성)
-path = sys.argv[1] if sys.argv[1] else "c:/tmp"
+path = sys.argv[1] if sys.argv[1] else "c:/tmp"  # 리눅스에 없긴 함
 
 if os.path.isdir(path) == False:
     os.mkdir(path)
@@ -33,9 +38,15 @@ for word, pos in okt.pos(text):
 stat = Counter(words).most_common(50)
 
 # 워드 클라우드 이미지 생성
-wc = WordCloud(font_path='../my_fonts/NanumGothic-ExtraBold.ttf', 
+image_file = strftime('%Y%m%d%H') + "_news.jpg"
+wc = WordCloud(font_path='C:/Users/admin/Desktop/Daeun-ai/08 Data-Analysis-Python/source/my_fonts/NanumGothic-ExtraBold.ttf', 
                 background_color='white', 
                 max_font_size=200,
                 width=700, height=450)
 cloud = wc.generate_from_frequencies(dict(stat))
-cloud.to_file(f"{path}/{strftime('%Y%m%d%H')}_news.jpg")
+cloud.to_file(f"{path}/{image_file}")
+
+# JSON 문자열로 출력
+data = {"image": image_file, "keywords": dict(stat)}
+
+print(json.dumps(data, ensure_ascii=False))
