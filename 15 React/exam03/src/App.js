@@ -1,6 +1,6 @@
 import MyComponent from './components/MyComponent';
 import MyComponent2 from './components/MyComponent2';
-import Counter from './components/Counter';
+import Counter from './components/Counter2';
 
 const App = () => {
   return (
