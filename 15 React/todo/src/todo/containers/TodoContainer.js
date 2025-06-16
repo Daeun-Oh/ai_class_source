@@ -6,16 +6,58 @@ const TodoContainer = () => {
   // 이건 비효율적임
   //   const [todo, setTodo] = useState();
   //   const [todoContent, setTodoContent] = useState();
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({}); // {} : null / 아무것도 안 넣으면 : undefined (오류 발생)
+  const [items, setItems] = useState([
+    { id: 1, title: '할일1', content: '할일1 내용', checked: false },
+    { id: 2, title: '할일2', content: '할일2 내용', checked: true },
+    { id: 3, title: '할일3', content: '할일3 내용', checked: false },
+  ]);
+  const [errors, setErrors] = useState({});
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('form', form);
+
+    // -- 유효성 검사 S --
+
+    // if (!form?.title || !form?.title?.trim()) {
+    //   // undefined, null 또는 공백 문자만 있는 경우
+    //   errors.title = '제목을 입력하세요.';
+    // }
+    // if (!form?.content || !form?.content?.trim()) {
+    //   errors.content = '내용을 입력하세요.';
+    // }
+
+    let hasErrors = false;
+
+    const requiredFields = {
+      title: '제목을 입력하세요.',
+      content: '내용을 입력하세요.',
+    };
+    const errors = {};
+    for (const [field, message] of Object.entries(requiredFields)) {
+      if (!form[field] || !form[field]?.trim()) {
+        errors[field] = message;
+        hasErrors = true;
+      }
+    }
+
+    // 유효성 검사 실패 시 다음 로직 실행 X
+    setErrors(errors);
+    if (hasErrors) return;
+
+    // -- 유효성 검사 E --
+
+    // items.push(form); -> 새로운 객체가 아니라서(주소가 같아서) 변화 감지 X
+    // setItems(items);
+
+    setItems(items.concat({ ...form, id: Date.now() }));
   };
 
   const onChange = (e) => {
-    form[e.target.name] = e.target.value;
+    // form[e.target.name] = e.target.value;
+    //   -> 깊은 복사: 객체의 주솟값을 비교. 메모리에서 한번 만들어진 form={...} 객체는 값을 직접 바꿔도 주소는 바뀌지 않음.
     setForm({ ...form, [e.target.name]: e.target.value });
+    //   -> 얕은 복사: 새로운 객체를 생성하고, 안에 있는 값만 비교.
   };
 
   // change 이벤트 핸들러 함수: 텍스트에 변화가 생길 때마다 호출
@@ -30,8 +72,13 @@ const TodoContainer = () => {
 
   return (
     <>
-      <TodoForm onSubmit={onSubmit} onChange={onChange} />
-      <TodoItems />
+      <TodoForm
+        onSubmit={onSubmit}
+        onChange={onChange}
+        form={form}
+        errors={errors}
+      />
+      <TodoItems items={items} />
       todo: {form.title} / todoContent: {form.content}
     </>
   );
