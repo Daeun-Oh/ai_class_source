@@ -51,13 +51,16 @@ const TodoContainer = () => {
     // setItems(items);
 
     setItems(items.concat({ ...form, id: Date.now() }));
+
+    // 양식 초기화
+    setForm({});
   };
 
   const onChange = (e) => {
     // form[e.target.name] = e.target.value;
-    //   -> 깊은 복사: 객체의 주솟값을 비교. 메모리에서 한번 만들어진 form={...} 객체는 값을 직접 바꿔도 주소는 바뀌지 않음.
+    //   -> 얕은 복사: 객체의 주솟값을 비교. 메모리에서 한번 만들어진 form={...} 객체는 값을 직접 바꿔도 주소는 바뀌지 않음.
     setForm({ ...form, [e.target.name]: e.target.value });
-    //   -> 얕은 복사: 새로운 객체를 생성하고, 안에 있는 값만 비교.
+    //   -> 깊은 복사: 새로운 객체를 생성하고, 안에 있는 값만 비교.
   };
 
   // change 이벤트 핸들러 함수: 텍스트에 변화가 생길 때마다 호출
@@ -70,6 +73,25 @@ const TodoContainer = () => {
   //     setTodoContent(e.target.value);
   //   };
 
+  // 체크박스 토글 처리
+  const onToggle = (id) => {
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, checked: !item.checked } : item,
+      ),
+    );
+  };
+
+  // 스케줄 삭제 처리 - 해당 id를 제외한 나머지 목록으로 새로운 객체 반환
+  const onRemove = (id) => {
+    setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  };
+
+  // 선택된 스케줄 일괄 삭제 처리
+  const onRemoveAll = () => {
+    setItems(items.filter(({ checked }) => !checked));
+  };
+
   return (
     <>
       <TodoForm
@@ -78,8 +100,12 @@ const TodoContainer = () => {
         form={form}
         errors={errors}
       />
-      <TodoItems items={items} />
-      todo: {form.title} / todoContent: {form.content}
+      <TodoItems
+        items={items}
+        onToggle={onToggle}
+        onRemove={onRemove}
+        onRemoveAll={onRemoveAll}
+      />
     </>
   );
 };
