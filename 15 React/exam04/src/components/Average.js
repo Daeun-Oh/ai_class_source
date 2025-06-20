@@ -7,7 +7,7 @@ const getAverage = (items) => {
 
   const total = items.reduce((a, b) => a + b);
 
-  const avg = Math.round(total / items.length * 10) / 10;
+  const avg = Math.round((total / items.length) * 10) / 10;
 
   return avg;
 };
@@ -22,11 +22,12 @@ const Average = () => {
     } catch (e) {}
   }, []);
 
-  const onSubmit = useCallback((e) => {
-    e.preventDefault();
-    setItems((items) => items.concat(number));
-  },
-  [number],
+  const onSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      setItems((items) => items.concat(number));
+    },
+    [number],
   );
 
   // 최적 방법: items가 변경될 때만 평균을 구함
