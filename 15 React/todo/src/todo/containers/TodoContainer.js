@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { produce } from 'immer';
 import TodoForm from '../components/TodoForm';
 import TodoItems from '../components/TodoItems';
 
@@ -50,7 +51,12 @@ const TodoContainer = () => {
     // items.push(form); -> 새로운 객체가 아니라서(주소가 같아서) 변화 감지 X
     // setItems(items);
 
-    setItems(items.concat({ ...form, id: Date.now() }));
+    // setItems(items.concat({ ...form, id: Date.now() }));
+    setItems(
+      produce((draft) => {
+        draft.push({ ...form, id: Date.now() });
+      }),
+    );
 
     // 양식 초기화
     setForm({});
@@ -84,7 +90,11 @@ const TodoContainer = () => {
 
   // 스케줄 삭제 처리 - 해당 id를 제외한 나머지 목록으로 새로운 객체 반환
   const onRemove = (id) => {
-    setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+    // setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+    const index = items.findIndex((item) => item.id === id);
+    setItems(produce((draft) => {
+      draft.splice(index, 1, 0);
+    })); // 불변성 유지가 알아서 됨
   };
 
   // 선택된 스케줄 일괄 삭제 처리
