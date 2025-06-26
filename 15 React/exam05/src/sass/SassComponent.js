@@ -1,3 +1,5 @@
+import './SassComponent.scss'
+
 const SassComponent = () => {
   return (
     <div className="SassComponent">
