@@ -2,4 +2,7 @@ dbeaver/
 gradle-*/
 apache-tomcat-*/
 node_modules/
-08 Data-Analysis-Python/source/basic/*
+**/basic/*
+**/.venv/*
+DL-Project/Quick Draw/data/*
+09 Fintech-ML-DL/source/day12/Pistachio_Image_Dataset/*

@@ -1,19 +1,16 @@
-import styled from "styled-components";
-
-const StyledButton = styled.button`
-  background: ${({bg}) => bg ?? 'black'};
-  color: ${({color}) => color ?? 'white'};
-  border: 0;
-  height: 100px;
-  width: 250px;
-`;
+import { SmallButton, MediumButton } from "../global/Buttons";
 
 const StyledComponent1 = () => {
     return (
-        <div>
-            <StyledButton color="blue" bg="orange">클릭</StyledButton>
-        </div>
-    )
+      <div>
+        <SmallButton color="red" bg="yellow">
+          클릭
+        </SmallButton>
+        <MediumButton color="white" bg="blue">
+          클릭
+        </MediumButton>
+      </div>
+    );
 };
 
 export default StyledComponent1;
