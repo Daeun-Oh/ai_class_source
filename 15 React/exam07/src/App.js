@@ -1,4 +1,5 @@
 import ColorBox from './components/ColorBox';
+import SelectColors from './components/SelectColors';
 import { ColorProvider } from './contexts/color';
 
 const App = () => {
@@ -7,6 +8,7 @@ const App = () => {
       {/* ColorProvider: 값 교체 -> 하위에서도 가능 */}
       <ColorProvider>
         <ColorBox />
+        <SelectColors /> 
       </ColorProvider>
     </>
   );
