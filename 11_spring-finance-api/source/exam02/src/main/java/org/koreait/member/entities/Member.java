@@ -1,20 +1,52 @@
 package org.koreait.member.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
-
-import java.time.LocalDateTime;
+import org.koreait.global.entities.Address;
+import org.koreait.global.entities.BaseEntity;
+import org.koreait.member.constants.Authority;
 
 @Data
 @Entity
-public class Member {
+@Table(name = "kit_member",
+        indexes = {
+        @Index(name = "idx_member_created_at", columnList = "createdAt DESC"),
+//        @Index(name = "up_member_email_name", columnList = "email, name", unique = true)
+        })
+public class Member extends BaseEntity {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long seq;
+
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.UUID)
+//    private String seq;
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long seq;
 
+    @Column(nullable = false, length = 80)
     private String email;
-    private String name;
+
+    @Column(name = "passwd", nullable = false, length = 65)
     private String password;
 
-    private LocalDateTime createdAt;
+    @Column(nullable = false, length = 45)
+    private String name;
+
+    @Lob
+    private String introduction;
+
+    @Enumerated(EnumType.STRING)
+    private Authority authority;
+
+    @Embedded
+    private Address address;
+
+    @Transient  // 엔티티로 관리되는 필드가 X. 엔티티 클래스 내부에서만 사용.
+    private String profileImage;
+
+//    @Temporal(TemporalType.DATE)
+//    private LocalDateTime modifiedAt;
 }

@@ -19,7 +19,7 @@ public class Ex01 {
     @Test
     void test1() {
         Member member = new Member();
-        member.setSeq(1L);
+//        member.setSeq(1L);
         member.setEmail("kyh@test.org");
         member.setName("고영희");
         member.setPassword("1234");

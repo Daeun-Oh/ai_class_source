@@ -22,7 +22,7 @@ public class Ex02 {
     void init() {
         // Data 10개
         Member member = new Member();
-        member.setSeq(1L);
+//        member.setSeq(1L);
         member.setEmail("user01@test.org");
         member.setPassword("12345678");
         member.setName("사용자01");
