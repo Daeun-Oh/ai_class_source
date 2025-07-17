@@ -5,6 +5,8 @@ import lombok.Data;
 import org.koreait.global.entities.BaseEntity;
 import org.koreait.member.entities.Member;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "boardData",
@@ -27,4 +29,7 @@ public class BoardData extends BaseEntity {
 
     @Column(nullable = false, length = 45)
     private String poster;
+
+    @ManyToMany
+    private List<HashTag> tags;
 }

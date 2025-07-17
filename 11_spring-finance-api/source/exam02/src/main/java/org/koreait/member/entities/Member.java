@@ -51,9 +51,17 @@ public class Member extends BaseEntity {
     @Transient  // 엔티티로 관리되는 필드가 X. 엔티티 클래스 내부에서만 사용.
     private String profileImage;
 
+    /**
+     * mappedBy: Many쪽, 외래키를 쥐고 있는 쪽이 주인 -> BoardData에 있는 member를 뜻함
+     * fetch: 지연 로딩 전략
+     * cascade: CascadeType.REMOVE - 연결된 자식이 있으면 함께 삭제
+     */
     @ToString.Exclude
-    @OneToMany(mappedBy = "member")  // Many쪽, 외래키를 쥐고 있는 쪽이 주인 -> BoardData에 있는 member를 뜻함
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
     private List<BoardData> items;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private MemberProfile profile;
 
 //    @Temporal(TemporalType.DATE)
 //    private LocalDateTime modifiedAt;
