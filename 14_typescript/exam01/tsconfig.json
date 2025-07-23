@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",       // Node.js용 CommonJS 모듈 방식
+    "esModuleInterop": true,    // ES 모듈과 CommonJS 호환
+    "target": "esnext",         // 최신 JS로 컴파일
+    "moduleResolution": "node", // Node 스타일 모듈 해석
+    "outDir": "dist",           // 결과물 출력 폴더
+    "baseUrl": ".",             // 모듈 해석 기준 경로
+    "sourceMap": true,          // 소스맵 생성
+    "downlevelIteration": true, // 최신 반복문 호환
+    "noImplicitAny": false,     // any 허용
+    "paths": { "*": ["node_modules/*"] } // 경로 매핑
+  },
+  "include": ["src/**/*"]       // src 폴더 이하를 컴파일
+}
