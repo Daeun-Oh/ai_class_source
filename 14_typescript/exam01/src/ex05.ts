@@ -8,7 +8,7 @@ function sayHello2(name: string): string {
 }
 
 // 콜백 함수 타입: 매개변수 - string, 반환값 - 없음
-type callbackType = (string) => void
+type callbackType = (a: string) => void
 
 function sayHello3(name: string, callback: callbackType) {
   console.log("name", name)

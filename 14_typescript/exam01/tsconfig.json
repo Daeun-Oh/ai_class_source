@@ -11,5 +11,6 @@
     "noImplicitAny": false,     // any 허용
     "paths": { "*": ["node_modules/*"] } // 경로 매핑
   },
-  "include": ["src/**/*"]       // src 폴더 이하를 컴파일
+  // "include": ["src/**/*"]       // src 폴더 이하를 컴파일
+  "include": ["src2/**/*"]       // src2 폴더 이하를 컴파일
 }
